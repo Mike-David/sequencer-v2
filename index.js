@@ -7,6 +7,17 @@ const instruments = {
     highHat: new Tone.Player("./assets/LINN/hh.wav").toDestination(),
 }
 
+//store the last note user clicked 
+let activeNote;
+
+//sliders
+let volume = document.getElementById('volume');
+let length = document.getElementById('length');
+let noteValue = document.getElementById('note');
+
+let sliderLengths = ['16n', '8n', '4n', '1n']
+let sliderNotes = ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4']
+
 
 //data structure that represents the synth 
 //data representation of the sequencer 
@@ -129,7 +140,14 @@ let playNote = (step) => {
 checkBoxes.forEach((e) => {
     e.addEventListener('change', (e) => {
         let index = Number(e.target.dataset.note);
+        //returns whole array
         let notes = activeInstrument[index];
+        activeNote = notes
+
+        volume.value = activeNote.volume
+        length.value = `${sliderLengths.indexOf(activeNote.length)}`
+        noteValue.value = `${sliderNotes.indexOf(activeNote.note)}`
+
         // flip booleon in this case instead of assigning the opposite as new variable - toggle switch 
         // for example - notes.checked = false // !notes.checked = true;
         notes.checked = !notes.checked;

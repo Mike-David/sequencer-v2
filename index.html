@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sequencer</title>
     <style>
         .instrument {
             margin: .25em;
@@ -24,6 +24,15 @@
 
         <div>
         <h1>Sequencer</h1>
+        <div>
+        <h2>Volume</h2>
+        <input type="range" min="1" max="10" value="1" class="slider" id="volume">
+        <h2>Length</h2>
+        <input type="range" min="0" max="3" value="1" class="slider" id="length">
+        <h2>Note</h2>
+        <input type="range" min="0" max="11" value="1" class="slider" id="note">
+    </div>  
+        <div>
         <input class="sequence" type="checkbox" data-note="0">
         <input class="sequence" type="checkbox" data-note="1">
         <input class="sequence"type="checkbox"  data-note="2">
@@ -41,10 +50,12 @@
         <input class="sequence" type="checkbox" data-note="14">
         <input class="sequence" type="checkbox" data-note="15">
     </div>
+    </div>
     <button id="play">START/STOP</button>
     <button id="clear">CLEAR</button>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.35/Tone.js" integrity="sha512-lnXhe/3DWFLkSDEO0+Hb2ygRAR5YskNl3pIUUNaVIWmG9BiPujrfjTL7MtOlKk74V5XflNuq9jj54TaMTYoe1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
        <script src="./index.js"></script>
+       <script src="./sliders.js"></script>
 </body>
 </html>

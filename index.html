@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .instrument {
+            margin: .25em;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div style="display: flex; flex: auto;">
+            <button class="instrument" id="bassDrumArray">Bass Drum</button>
+            <button class="instrument" id="snareDrumArray">SnareDrum</button>
+            <button class="instrument" id="highHatArray">High Hat</button>
+            <button class="instrument" id="synthOneArray">Synth 1</button>
+            <button class="instrument" id="synthTwoArray">Synth 2</button>
+            <button class="instrument" id="synthThreeArray">Synth 3</button>
+        </div>
+
+        <div>
+        <h1>Sequencer</h1>
+        <input class="sequence" type="checkbox" data-note="0">
+        <input class="sequence" type="checkbox" data-note="1">
+        <input class="sequence"type="checkbox"  data-note="2">
+        <input class="sequence" type="checkbox" data-note="3">
+        <input class="sequence" type="checkbox" data-note="4">
+        <input class="sequence" type="checkbox" data-note="5">
+        <input class="sequence" type="checkbox" data-note="6">
+        <input class="sequence" type="checkbox" data-note="7">
+        <input class="sequence" type="checkbox" data-note="8">
+        <input class="sequence"type="checkbox"  data-note="9">
+        <input class="sequence" type="checkbox" data-note="10">
+        <input class="sequence" type="checkbox" data-note="11">
+        <input class="sequence" type="checkbox" data-note="12">
+        <input class="sequence" type="checkbox" data-note="13">
+        <input class="sequence" type="checkbox" data-note="14">
+        <input class="sequence" type="checkbox" data-note="15">
+    </div>
+    <button id="play">START/STOP</button>
+    <button id="clear">CLEAR</button>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.35/Tone.js" integrity="sha512-lnXhe/3DWFLkSDEO0+Hb2ygRAR5YskNl3pIUUNaVIWmG9BiPujrfjTL7MtOlKk74V5XflNuq9jj54TaMTYoe1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       <script src="./index.js"></script>
+</body>
+</html>

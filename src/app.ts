@@ -1,2 +1,2 @@
 import './sequencer/app.js';
-import './sequencer/sliders.js';
+import './sequencer/UIValues/sliders.js';

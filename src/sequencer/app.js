@@ -1,5 +1,5 @@
 import { instruments, instrumentArrays } from './instruments.js';
-import { sliders, sliderValues, checkBoxes } from './uiValues';
+import { sliders, sliderValues, checkBoxes } from './UIValues/uiValues';
 
 /* store the last note the user clicked */
 export let activeNote;

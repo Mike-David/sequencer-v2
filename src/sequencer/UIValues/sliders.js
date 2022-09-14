@@ -1,5 +1,5 @@
 import { sliders, sliderValues } from './uiValues';
-import { activeNote } from './app.js';
+import { activeNote } from '../app.js';
 
 sliders.volume.addEventListener('change', (e) => {
 	activeNote.volume = e.target.value;

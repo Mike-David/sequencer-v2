@@ -1,4 +1,3 @@
-//sliders
 export const sliders = {
 	volume: document.getElementById('volume'),
 	length: document.getElementById('length'),
@@ -23,7 +22,6 @@ export const sliderValues = {
 	],
 };
 
-// The checkboxes/notes
 export const checkBoxes = Array.from(
 	document.getElementsByClassName('sequence')
 );

@@ -1,3 +1,4 @@
+import { Transport } from 'tone';
 import * as Tone from 'tone/build/esm/core/Tone.js';
 import { instruments, instrumentArrays } from './instruments.js';
 import { sliders, sliderValues, checkBoxes } from './UIValues/uiValues';
@@ -164,7 +165,7 @@ document.getElementById('play').addEventListener('click', () => {
 	with the clearInterval function to stop the interval 
 	*/
 	if (!playButton) {
-		playButton = setInterval(() => playNote(currentNote, currentNote), 200);
+		playButton = (() => playNote(currentNote, currentNote), 200);
 	} else {
 		clearInterval(playButton);
 		playButton = undefined;

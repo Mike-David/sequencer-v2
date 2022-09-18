@@ -1,3 +1,4 @@
+import { Tone } from 'tone/build/esm/core/Tone.js';
 import { instruments, instrumentArrays } from './instruments.js';
 import { sliders, sliderValues, checkBoxes } from './UIValues/uiValues';
 
@@ -19,7 +20,8 @@ export let activeInstrument = bassDrumArray;
 /* 
 	Filling each instrument array with objects representing the note that checkbox will hold. 
 	Maybe we could probably make a Note class and use a constructor here. Is that needed?
-	or is an object literal enough? Maybe a TS interface would be nice?
+	or is an object literal enough? Maybe a TS interface would be nice? We should at least 
+	find a more DRY, less verbose way to do this. 
 */
 
 for (let i = 0; i < checkBoxes.length; i++) {
@@ -28,7 +30,7 @@ for (let i = 0; i < checkBoxes.length; i++) {
 		instrument: 'bassDrum',
 		type: 'sampler',
 		length: '8n',
-		volume: 10,
+		volume: 1,
 	});
 
 	snareDrumArray.push({
@@ -36,7 +38,7 @@ for (let i = 0; i < checkBoxes.length; i++) {
 		instrument: 'snareDrum',
 		type: 'sampler',
 		length: '8n',
-		volume: 10,
+		volume: 1,
 	});
 
 	highHatArray.push({
@@ -44,7 +46,7 @@ for (let i = 0; i < checkBoxes.length; i++) {
 		instrument: 'highHat',
 		type: 'sampler',
 		length: '8n',
-		volume: 10,
+		volume: 1,
 	});
 
 	synthOneArray.push({
@@ -53,7 +55,7 @@ for (let i = 0; i < checkBoxes.length; i++) {
 		type: 'synth',
 		note: 'F4',
 		length: '8n',
-		volume: 10,
+		volume: 1,
 	});
 
 	synthTwoArray.push({
@@ -62,7 +64,7 @@ for (let i = 0; i < checkBoxes.length; i++) {
 		type: 'synth',
 		note: 'F4',
 		length: '8n',
-		volume: 10,
+		volume: 1,
 	});
 
 	synthThreeArray.push({
@@ -71,13 +73,14 @@ for (let i = 0; i < checkBoxes.length; i++) {
 		type: 'synth',
 		note: 'F4',
 		length: '8n',
-		volume: 10,
+		volume: 1,
 	});
 }
 
 /* 
 set current value of note to index of 0 so that we can iterate through this Array
-once it reaches the end, it resets index to 0 and begins at the 1st Object in the Array
+once it reaches the end, it resets index to 0 and begins at the 1st Object in the Array.
+
 currentNote and playNote could be coupled into a class. Having them just floating 
 in space like this isn't great. 
 */
@@ -85,17 +88,18 @@ in space like this isn't great.
 let currentNote = 0;
 
 let playNote = (step) => {
-	let note = activeInstrument[step];
-	console.log(step);
-
 	const playInstrument = (instrument, step) => {
 		let note = instrument[step];
 		/* if not checked return (dont wanna do anything really unless true) */
 		if (note.checked === false) return;
 		/* sending note information to the synth to play it */
 		if (note.type === 'synth') {
-			console.log(instruments[note.instrument], note.instrument);
-			instruments[note.instrument].triggerAttackRelease(note.note, note.length);
+			instruments[note.instrument].triggerAttackRelease(
+				note.note,
+				note.length,
+				'+0',
+				note.volume
+			);
 		} else {
 			instruments[note.instrument].start();
 		}
@@ -133,7 +137,7 @@ checkBoxes.forEach((e) => {
 		let notes = activeInstrument[index];
 		activeNote = notes;
 
-		sliders.volume.value = activeNote.volume;
+		sliders.volume.value = activeNote.volume * 10;
 		sliders.length.value = `${sliderValues.sliderLengths.indexOf(
 			activeNote.length
 		)}`;

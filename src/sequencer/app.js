@@ -165,10 +165,12 @@ document.getElementById('play').addEventListener('click', () => {
 	with the clearInterval function to stop the interval 
 	*/
 	if (!playButton) {
-		playButton = (() => playNote(currentNote, currentNote), 200);
+		playButton = Transport.scheduleRepeat(() => playNote(currentNote, currentNote), '8n', 0);
+		Transport.start();
 	} else {
 		clearInterval(playButton);
 		playButton = undefined;
+		Transport.stop();
 	}
 });
 

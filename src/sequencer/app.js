@@ -1,4 +1,4 @@
-import { Tone } from 'tone/build/esm/core/Tone.js';
+import * as Tone from 'tone/build/esm/core/Tone.js';
 import { instruments, instrumentArrays } from './instruments.js';
 import { sliders, sliderValues, checkBoxes } from './UIValues/uiValues';
 
